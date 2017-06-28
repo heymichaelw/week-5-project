@@ -8,8 +8,13 @@
   },
   "author": "Michael Waites",
   "license": "ISC",
+  "jshintConfig": {
+    "esversion": 6
+  },
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "express-session": "^1.15.3",
     "mustache-express": "^1.2.5"
   }
 }

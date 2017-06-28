@@ -1,3 +1,19 @@
 {{#model}}
   {{.}}
 {{/model}}
+
+{{#array}}
+  {{.}}
+{{/array}}
+
+<br>
+
+You have guessed:
+{{#guessed}}
+{{.}}
+{{/guessed}}
+
+<form class="" action="/" method="post">
+  <input type="text" name="guess" value="">
+  <input type="submit" name="" value="Guess">
+</form>
