@@ -21,6 +21,10 @@ function getRandomWord(){
   return randWord;
 }
 
+function isLetter(guess){
+  return /^[a-zA-Z]/.test(guess);
+}
+
 module.exports = {
   randomMiddleware: function(req, res, next){
     if (!req.session.random) {
@@ -44,9 +48,22 @@ module.exports = {
     next();
   },
   checkCounterMiddleware: function(req, res, next){
-    if (req.session.counter >= 3) {
+    if (req.session.counter >= 2) {
       console.log('Exceeded!');
       res.redirect('/end');
+    }
+    next();
+  },
+  validationMiddleware: function(req, res, next){
+    if (!isLetter(req.body.guess)) {
+      req.session.message = 'Please guess a letter';
+      res.redirect('/');
+    }
+    next();
+  },
+  checkVictoryMiddleware: function(req, res, next){
+    if (!req.session.array.includes("_")) {
+      res.redirect('/win');
     }
     next();
   }

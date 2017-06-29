@@ -1,3 +1,6 @@
+{{message}}
+
+<br>
 {{#model}}
   {{.}}
 {{/model}}
@@ -8,12 +11,14 @@
 
 <br>
 
+<form class="" action="/" method="post">
+  <input type="text" name="guess" value="" maxlength="1" size="1">
+  <input type="submit" name="" value="Guess">
+</form>
+
+<br>
+
 You have guessed:
 {{#guessed}}
 {{.}}
 {{/guessed}}
-
-<form class="" action="/" method="post">
-  <input type="text" name="guess" value="">
-  <input type="submit" name="" value="Guess">
-</form>
