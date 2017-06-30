@@ -36,7 +36,7 @@ module.exports = {
       console.log(req.session.counter);
     }
     res.render('index', {model: req.session.random,
-    array: req.session.array, guessed: req.session.guessed, message: req.session.message});
+    array: req.session.array, guessed: req.session.guessed, message: req.session.message, counter: (8 - (req.session.counter))});
   },
   lose: function(req, res){
     delete req.session.random;
@@ -46,6 +46,13 @@ module.exports = {
     res.render('end');
   },
   win: function(req, res){
+    delete req.session.random;
+    delete req.session.array;
+    delete req.session.guessed;
+    delete req.session.counter;
     res.render('win');
+  },
+  no: function(req, res){
+    res.render('no');
   }
 };

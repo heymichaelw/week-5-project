@@ -8,4 +8,5 @@ module.exports = function(app){
   app.post('/', helpers.validationMiddleware, helpers.checkCounterMiddleware, wordController.guess);
   app.get('/end', wordController.lose);
   app.get('/win', wordController.win);
+  app.get('/no', wordController.no);
 };

@@ -1,5 +1,7 @@
 {{message}}
-
+{{#model}}
+{{.}}
+{{/model}}
 <br>
 {{#array}}
   {{.}}
@@ -13,6 +15,8 @@
 </form>
 
 <br>
+
+You have {{#counter}}{{.}}{{/counter}} guesses left.
 
 You have guessed:
 {{#guessed}}

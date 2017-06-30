@@ -48,7 +48,7 @@ module.exports = {
     next();
   },
   checkCounterMiddleware: function(req, res, next){
-    if (req.session.counter >= 2) {
+    if (req.session.counter >= 7) {
       console.log('Exceeded!');
       res.redirect('/end');
     }
