@@ -12,11 +12,6 @@ module.exports = {
   guess: function(req, res){
     delete req.session.message;
     var guess = (req.body.guess).toLowerCase();
-    if (!req.session.guessed.includes(guess)) {
-      req.session.guessed.push(guess);
-    } else {
-      req.session.message = "You've already guessed that!";
-    }
     if (req.session.random.includes(guess)) {
       var indices = [];
       for (var i = 0; i < req.session.random.length; i++) {
@@ -31,9 +26,15 @@ module.exports = {
       if (!req.session.array.includes('_')) {
         res.redirect('/win');
       }
+    } else if (!req.session.random.includes(guess) && (req.session.guessed.includes(guess))) {
+      req.session.message = "You've already guessed that!";
     } else {
       (req.session.counter)++;
-      console.log(req.session.counter);
+    }
+    if (!req.session.guessed.includes(guess)) {
+      req.session.guessed.push(guess);
+    } else {
+      req.session.message = "You've already guessed that!";
     }
     res.render('index', {model: req.session.random,
     array: req.session.array, guessed: req.session.guessed, message: req.session.message, counter: (8 - (req.session.counter))});
